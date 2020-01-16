@@ -27,7 +27,7 @@ namespace WebApiDemo.DataAccess
             using (var context = new TContext())
             {
                 var deletedEntity = context.Entry(entity);
-                deletedEntity.State = EntityState.Modified;
+                deletedEntity.State = EntityState.Deleted;
                 context.SaveChanges();
             }
         }

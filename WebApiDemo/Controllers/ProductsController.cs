@@ -70,5 +70,32 @@ namespace WebApiDemo.Controllers
             }
             return BadRequest();
         }
+        [HttpDelete("{productId}")]
+        public IActionResult Delete(int productId)
+        {
+            try
+            {
+              _productDal.Delete(new Product() { ProductId=productId });
+              return Ok();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return BadRequest();
+         }
+        [HttpGet("GetProductDetails")]
+        public IActionResult GetProductsWithDetails()
+        {
+            try
+            {
+                var result = _productDal.GetProductsWithDetails();
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+            }
+            return BadRequest();
+        }
     }
 }
