@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WebApiDemo.CustomMiddlewares;
 using WebApiDemo.DataAccess;
 using WebApiDemo.Formatters;
 
@@ -47,6 +48,7 @@ namespace WebApiDemo
                 app.UseHsts();
             }
 
+            app.UseMiddleware<AuthenticationMiddleware>();
             app.UseHttpsRedirection();
             app.UseMvc(
             //    config => {
